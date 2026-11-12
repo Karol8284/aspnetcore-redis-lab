@@ -1,0 +1,20 @@
+using Application.Modules.ProjectTasks.Shared;
+using Application.Modules.Projects.Shared;
+using Domain.Enums;
+using MediatR;
+
+namespace Application.Modules.ProjectTasks.CreateProjectTask;
+
+/// <summary>
+/// Represents the application input for creating a task in a project.
+/// </summary>
+public sealed record CreateProjectTaskCommand(
+    Guid OwnerId,
+    Guid ProjectId,
+    string Title,
+    string? Description,
+    ProjectTaskPriority Priority,
+    DateTime? DueDate,
+    Guid? AssignedUserId,
+    IReadOnlyList<string> Labels)
+    : IRequest<ProjectOperationResult<ProjectTaskView>>;
