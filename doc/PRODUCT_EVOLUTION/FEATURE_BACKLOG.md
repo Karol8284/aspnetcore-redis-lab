@@ -41,6 +41,7 @@ Oceny są hipotezą roboczą:
 | CAP-010 | Saved views, filters and personal workspace preferences | P2 | 3 | 3 | 2 | proposed |
 | CAP-011 | Outbound integrations and signed webhooks | P2 | 3 | 5 | 5 | proposed |
 | CAP-012 | Passkeys, OIDC/SSO lub multi-tenancy | P3 | 5 | 5 | 5 | parked as separate decisions |
+| DX-003 | Redis cache-aside lab dla dashboardu projektu | P2 | 3 | 5 | 4 | Gate 0 blocked |
 
 ## Recommended order
 
@@ -117,6 +118,13 @@ w którym potrzebna byłaby koordynacja rozproszona.
 `CAP-009` ma sens dla operacji, które mogą być ponawiane po timeoutach lub awarii:
 email outbox, webhooki, uploady i komendy uruchamiane z UI. Idempotency key nie powinien
 być obowiązkowym polem każdego endpointu bez dowodu, że retry jest realnym problemem.
+
+`DX-003` pozostaje kandydatem badawczym, nie funkcją do wdrożenia. Gate 0
+wybrał wyłącznie `GET /api/projects/{projectId}/dashboard` i bazuje na
+istniejącym fixture 10 000 zadań. Przed implementacją Redis wymagany jest
+powtarzalny test współbieżny, jawny próg poprawy p95 lub obciążenia PostgreSQL,
+polityka stale-data oraz koszt invalidacji po udanych zapisach. Szczegóły i
+aktualna decyzja znajdują się w [`doc/REDIS_LAB.md`](../REDIS_LAB.md).
 
 ## Karty kandydatów
 
