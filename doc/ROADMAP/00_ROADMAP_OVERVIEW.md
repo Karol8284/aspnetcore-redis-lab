@@ -101,6 +101,12 @@ Szczegółowa kolejność znajduje się w
 
 Nie dodajemy Redis, kolejki, mikroserwisów, Kafki ani Kubernetes wyłącznie dla CV. Najpierw trzeba rozumieć ograniczenie, zmierzyć problem i uzasadnić koszt rozwiązania.
 
+Redis Lab ma osobną measurement-first roadmapę w
+[`REDIS_LAB.md`](../REDIS_LAB.md). Gate 0 wskazał dashboard projektu jako
+jedynego kandydata, ale jest zablokowany do czasu uzyskania kontrolowanego
+pomiaru współbieżnego, progu sukcesu i polityki stale-data. Wtedy nie należy
+traktować Redis jako elementu działającego startera ani rozszerzać go do V8.
+
 ## Kierunek organizacji funkcji
 
 Od V3 preferowanym kierunkiem jest hybrydowy modularny monolit:
